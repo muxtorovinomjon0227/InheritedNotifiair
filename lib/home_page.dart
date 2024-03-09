@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_inheritedwidget/home_body.dart';
 import 'package:flutter_inheritedwidget/user.dart';
-import 'package:flutter_inheritedwidget/user_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,27 +20,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('InheritedNotifier Demo'),
       ),
-      body: Center(
-        child: UserModel(
-          user: user,
-          child: Builder(builder: (context) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Name : ${UserModel.of(context)!.name}',
-                  style: const TextStyle(fontSize: 20),
-                ),
-                Text(
-                  'Age : ${UserModel.of(context)!.age}',
-                  style: const TextStyle(fontSize: 20),
-                )
-              ],
-            );
-          }),
-        ),
-      ),
+      body: HomeBody(user: user),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
             showModalBottomSheet(
